@@ -1,0 +1,5 @@
+# link to download the face-api.js
+# https://github.com/justadudewhohacks/face-api.js/blob/master/dist/face-api.min.js
+
+# link to the models weights
+# " https://github.com/justadudewhohacks/face-api.js/tree/master/weights "

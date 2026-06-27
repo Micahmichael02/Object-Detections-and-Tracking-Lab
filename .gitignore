@@ -17,7 +17,7 @@ venv/
 .idea/
 .vscode/
 
-# Large media (videos, gifs) — too big for GitHub
+# Large media (videos) — too big for GitHub
 *.mp4
 *.avi
 *.mov
@@ -29,6 +29,8 @@ venv/
 *.onnx
 *.weights
 *.h5
+*.hdf5
+*.tflite
 
 # Datasets / large data dumps
 *.zip

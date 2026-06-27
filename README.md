@@ -14,9 +14,22 @@ A portfolio of standalone computer vision projects — object detection, face at
 | 6 | [Sign Language Detection](#6-sign-language-detection) | Gesture Recognition | `sign_lan_detections/` |
 | 7 | [Monocular Depth + 3D Object Detection](#7-monocular-depth--3d-object-detection) | Object Detection + Depth | `monocular-depth-object-detection-main/` |
 | 8 | [Computer Vision Based Track Pad](#8-computer-vision-based-track-pad-airscroll) | Gesture Recognition | `Computer-Vision-Based-Track-Pad-main/` |
-| 9+ | _Reserved for future projects_ | — | — |
+| 9 | [ANPR (Classic CV)](#anpr-classic-cv) | Object Detection + OCR | `ANPR/` |
+| 10 | [ANPR — YOLOv8 + EasyOCR + SORT](#anpr-yolov8-easyocr-sort) | Object Detection + Tracking + OCR | `Anpr_YOLOv8_EasyOCR/` |
+| 11 | [YOLO11 Number Plate + MySQL](#yolo11-numberplate-mysql) | Object Detection + OCR + DB | `yolo11-numberplate-xampp-server-main/` |
+| 12 | [Parking Spot Occupancy Detection](#parking-spot-occupancy-detection) | Classification + Analytics | `parking_spot_detection/` |
+| 13 | [YOLO Parking Space (Custom Zones)](#yolo-parking-space-custom-zones) | Object Detection + Analytics | `yolo_parking_space/` |
+| 14 | [Face Anonymization](#face-anonymization) | Privacy / Face Detection | `Anonymizing_Face_detection/` |
+| 15 | [Face Emotion Detection](#face-emotion-detection) | Object Detection + Classification | `Emotion_detection/` |
+| 16 | [Face Classification (Emotion + Gender)](#face-classification-emotion-gender) | Face Detection + Classification | `face_classification/` |
+| 17 | [Browser Face Recognition (face-api.js)](#browser-face-recognition) | Face Recognition (Web) | `face_rec_javascript/` |
+| 18 | [QR Code Attendance System](#qr-code-attendance-system) | QR Detection + Attendance | `QR_reader+attendance_system/` |
+| 19 | [Scene Text Detection](#scene-text-detection) | OCR | `Text_Detection/` |
+| 20 | [Color Detection](#color-detection) | Color Segmentation | `color_detection/` |
+| 21 | [Image Classifier (SVM)](#image-classifier-svm) | Classification | `image-classifier/` |
+| 22 | [Computer Vision Projects (Toolkit)](#cv-toolkit) | Counting, Privacy, Fall Detection, QA | `ComputerVision-projects-github/` |
 
-Jump to [Converting an MP4 result into a GIF](#converting-an-mp4-result-into-a-gif) and [Adding more projects](#adding-more-projects).
+Jump to [More Projects](#more-projects) for the full gallery with previews, tech stack, and usage details for projects 9–22.
 
 ---
 
@@ -213,6 +226,127 @@ Press `q` to stop.
 
 ---
 
+## More Projects
+
+A gallery of additional standalone CV projects in this lab. Each card links straight to its folder in this repo.
+
+<table>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="anpr-classic-cv">🚘 ANPR (Classic CV)</h3>
+      <img src="ANPR/demo.gif" width="100%" alt="ANPR demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/ANPR"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> OpenCV (grayscale/Canny/contours), EasyOCR, Jupyter Notebook</p>
+      <p>Locates a vehicle's license plate without any deep-learning detector — edge detection + contour filtering finds the plate-shaped region, then EasyOCR reads the text, for both a single image (<code>plate_no_detection.ipynb</code>) and frame-by-frame video (<code>video_plate-no_detection.ipynb</code>).</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="anpr-yolov8-easyocr-sort">🚗 ANPR — YOLOv8 + EasyOCR + SORT</h3>
+      <img src="Anpr_YOLOv8_EasyOCR/demo.gif" width="100%" alt="YOLOv8 ANPR demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/Anpr_YOLOv8_EasyOCR"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> YOLOv8 (vehicle + plate detection), SORT tracking, EasyOCR, Pandas</p>
+      <p>Two YOLOv8 models detect vehicles and license plates per frame; SORT tracks each vehicle across frames so a plate is only OCR'd once per car, and results (bbox, plate text, OCR confidence) are written to CSV via <code>visualize.py</code> / <code>add_missing_data.py</code>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="yolo11-numberplate-mysql">🅿️ YOLO11 Number Plate + MySQL</h3>
+      <img src="yolo11-numberplate-xampp-server-main/demo.gif" width="100%" alt="YOLO11 number plate demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/yolo11-numberplate-xampp-server-main"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> YOLO11 (TFLite export), PaddleOCR, OpenCV, MySQL (XAMPP)</p>
+      <p>Tracks vehicles crossing a defined polygon zone with a YOLO11 TFLite model, OCRs the cropped plate with PaddleOCR, and persists each unique plate + entry date/time into a MySQL <code>numberplate</code> table (<code>server.py</code>) running under XAMPP.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="parking-spot-occupancy-detection">🅿️ Parking Spot Occupancy Detection</h3>
+      <img src="parking_spot_detection/demo.gif" width="100%" alt="Parking spot detection demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/parking_spot_detection"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> OpenCV connected components, scikit-learn SVM, scikit-image</p>
+      <p>A hand-painted mask locates every parking spot via connected-components analysis; each spot is sampled every 30 frames and classified empty/occupied by a pretrained SVM (<code>model.pkl</code>, trained in <a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/image-classifier">image-classifier</a>), with a live "Available spots: X / Y" overlay.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="yolo-parking-space-custom-zones">🅿️ YOLO Parking Space (Custom Zones)</h3>
+      <img src="yolo_parking_space/demo.gif" width="100%" alt="YOLO parking space demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/yolo_parking_space"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> YOLOv8/YOLO11, OpenCV polygon drawing, cvzone</p>
+      <p>Draw and name arbitrary polygon parking zones by hand on a paused frame (<code>detect.py</code>, saved to a <code>freedomtech</code> pickle file), then run YOLO detection inside each zone to flag which custom-shaped spots are occupied — handy for irregular lots a single mask can't cover.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="face-anonymization">🙈 Face Anonymization</h3>
+      <img src="Anonymizing_Face_detection/demo.gif" width="100%" alt="Face anonymization demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/Anonymizing_Face_detection"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> OpenCV, MediaPipe Face Detection</p>
+      <p>Detects every face in an image, video file, or live webcam feed with MediaPipe and blurs it in place for privacy/compliance — three entry points (<code>blurimg.py</code>, <code>blurvideo.py</code>, <code>blurwebcam.py</code>) cover each input type.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="face-emotion-detection">😀 Face Emotion Detection</h3>
+      <img src="Emotion_detection/models/face-emotions/content/runs/detect/train/val_batch0_pred.jpg" width="100%" alt="Face emotion detection demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/Emotion_detection"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> Ultralytics YOLO, custom-trained face-emotions dataset</p>
+      <p>A YOLO model fine-tuned on a labeled face-emotions dataset detects faces and classifies the emotion (happy/sad/angry/neutral/fear/disgust) directly as the bounding-box label; <code>Emotions_detections.ipynb</code> walks through training and inference end-to-end.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="face-classification-emotion-gender">🧠 Face Classification (Emotion + Gender)</h3>
+      <img src="face_classification/images/color_demo.gif" width="100%" alt="Face classification demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/face_classification"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> Keras CNN (mini-XCEPTION), OpenCV, fer2013 + IMDB datasets</p>
+      <p>Real-time face detection feeding two Keras CNN classifiers in parallel — emotion (fer2013, 66% test accuracy) and gender (IMDB, 96% test accuracy) — plus a guided-backprop demo that visualizes what the CNN focuses on. (Vendored from <a href="https://github.com/oarriaga/face_classification">oarriaga/face_classification</a>.)</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="browser-face-recognition">🌐 Browser Face Recognition (face-api.js)</h3>
+      <img src="face_rec_javascript/Data/elon/2.png" width="100%" alt="Browser face recognition sample" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/face_rec_javascript"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> face-api.js (TensorFlow.js), SSD Mobilenet, vanilla JS</p>
+      <p>A pure browser demo — loads SSD Mobilenet + face-recognition-net + landmark models client-side, builds labeled face descriptors from <code>Data/&lt;name&gt;/*.png</code>, then matches every face in the live webcam feed against those labels in real time.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="qr-code-attendance-system">📷 QR Code Attendance System</h3>
+      <img src="QR_reader+attendance_system/Figure_1.png" width="100%" alt="QR code attendance demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/QR_reader%2Battendance_system"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> OpenCV, pyzbar</p>
+      <p>Decodes QR codes from a static image (<code>main.py</code>) or live webcam (<code>main_webcam.py</code>), checks the payload against <code>whitelist.txt</code>, overlays Authorized/Unauthorized on-frame, and appends a timestamped row to <code>attendance.txt</code> for every newly-seen authorized code.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="scene-text-detection">🔤 Scene Text Detection</h3>
+      <img src="Text_Detection/Figure_1.png" width="100%" alt="Text detection demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/Text_Detection"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> EasyOCR, OpenCV, Matplotlib</p>
+      <p>Runs EasyOCR over an input image to localize and read every text region, drawing bounding boxes and the recognized string back onto the image for review.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="color-detection">🎨 Color Detection</h3>
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/color_detection"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> OpenCV, NumPy, Pillow</p>
+      <p>Converts each webcam frame to HSV, builds a tolerant hue range around a target BGR color (yellow by default) via <code>util.get_limits</code>, masks it, and draws a bounding box around the largest matching region in real time.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="5%" align="center">
+      <h3 id="image-classifier-svm">🖼️ Image Classifier (SVM)</h3>
+      <img src="image-classifier/Screenshot 2024-12-20 144108.png" width="100%" alt="Image classifier demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/image-classifier"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> scikit-learn (SVM + GridSearchCV), scikit-image</p>
+      <p>Trains an SVM (grid-searched over <code>C</code>/<code>gamma</code>) on resized 15×15 images from <code>clf-data/empty</code> and <code>clf-data/not_empty</code>, producing <code>model.pkl</code> — this is the exact classifier <a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/parking_spot_detection">parking_spot_detection</a> loads to decide if a parking spot is occupied.</p>
+    </td>
+    <td width="5%" align="center">
+      <h3 id="cv-toolkit">🧰 Computer Vision Projects (Toolkit)</h3>
+      <img src="ComputerVision-projects-github/demo.gif" width="100%" alt="CV toolkit demo" />
+      <p><a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/ComputerVision-projects-github"><strong>View Repository →</strong></a></p>
+      <p><strong>Tech:</strong> PyTorch, Ultralytics YOLO, Supervision, OpenCV</p>
+      <p>A small toolkit of four standalone tools sharing one dependency set: multi-lane vehicle counting, license-plate blurring for privacy, human fall detection from body keypoints, and vaccine-bottle cap/seal monitoring on a production line. See its own <a href="https://github.com/Micahmichael02/Object-Detections-and-Tracking-Lab/tree/main/ComputerVision-projects-github#-projects-catalog">README</a> for per-tool config.</p>
+    </td>
+  </tr>
+</table>
+
+<!--
+Maintainer notes (not rendered): how the demo GIFs were made, and the template for adding a new project.
+
 ## Converting an MP4 result into a GIF
 
 Every project above that writes an `output.mp4`/result video can be turned into a lightweight, README-friendly GIF the same way (uses `ffmpeg`'s two-pass palette generation for good quality at a small file size):
@@ -249,7 +383,8 @@ python <script>.py
 
 **Results / analysis:** where output files/images/video land and what to look at.
 
-<!-- embed any output images/GIFs here -->
+(embed any output images/GIFs here)
 ```
 
 Add the new row to the [Contents](#contents) table at the top, pointing at the new section anchor and folder.
+-->
