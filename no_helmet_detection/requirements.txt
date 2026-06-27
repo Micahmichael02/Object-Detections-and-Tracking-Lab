@@ -1,0 +1,7 @@
+paddlepaddle
+opencv-python
+numpy
+ultralytics
+datatime
+xlwings 
+paddleocr

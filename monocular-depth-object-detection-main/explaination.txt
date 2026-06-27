@@ -1,0 +1,31 @@
+Project Structure:
+The project has several Python scripts for different functionalities
+Each script serves a specific purpose (calibration, detection, depth estimation, 3D reconstruction)
+The project uses YOLO for object detection and Apple's ml-depth-pro for depth estimation
+
+
+Required Folders:
+data/: For your test images
+output/: For generated results
+chessboard_calibration/: For camera calibration images
+
+
+How to Test:
+First, install requirements: pip install -r requirements.txt
+For camera calibration:
+Place chessboard images in chessboard_calibration/
+Run calibration-camera.py
+For single image testing:
+Place your image in data/
+Run any of the single-image scripts
+For multiple images/video:
+Create a folder in data/ (e.g., data/car_1/)
+Place your images there
+Run the video processing scripts
+
+
+Required Models:
+YOLO models: yolo11s.pt and yolo11s-seg.pt
+Depth model (automatically downloaded)
+The guide includes detailed explanations of each script, setup instructions, and troubleshooting tips. You can find it in the project directory as PROJECT_GUIDE.md.
+Would you like me to explain any specific part in more detail or help you get started with testing the project?
